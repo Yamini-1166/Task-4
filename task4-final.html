@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MyWebsite</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Navbar Styles */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(to right, #add8e6, #90ee90); /* Light blue to light green gradient */
+      color: white;
+      padding: 10px 20px;
+    }
+
+    .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+    }
+
+    .nav-links li {
+      margin: 0;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+    }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5em;
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        background-color: #add8e6; /* Light blue */
+        position: absolute;
+        top: 50px;
+        right: 20px;
+        padding: 10px;
+        border-radius: 5px;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: block;
+      }
+    }
+
+    /* Section Styles */
+    section {
+      padding: 20px;
+      text-align: center;
+    }
+
+    #home {
+      background-color: #e3f2fd;
+    }
+
+    #about {
+      background-color: #f1f8e9;
+    }
+
+    #services {
+      background-color: #e0f7fa;
+    }
+
+    #contact {
+      background-color: #fce4ec;
+    }
+
+    /* Gallery Styles */
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 20px;
+      justify-content: center;
+    }
+
+    .gallery img {
+      width: 200px;
+      height: 150px;
+      object-fit: cover;
+      cursor: pointer;
+      border: 3px solid #90ee90; /* Light green */
+      border-radius: 5px;
+    }
+
+    /* Lightbox Styles */
+    #lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    #lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+      border: 5px solid #add8e6; /* Light blue */
+      border-radius: 10px;
+      box-shadow: 0 0 15px #fff;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo">MyWebsite</div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMenu()">☰</button>
+  </nav>
+
+  <!-- Sections -->
+  <section id="home">
+    <h1>Welcome to MyWebsite</h1>
+    <p>Your one-stop destination for all things amazing!</p>
+  </section>
+
+  <section id="about">
+    <h1>About Us</h1>
+    <p>At MyWebsite, we are dedicated to delivering top-notch solutions and experiences to our users.</p>
+  </section>
+
+  <section id="services">
+    <h1>Our Services</h1>
+    <p>We offer a variety of services tailored to your needs, including web development, graphic design, and more.</p>
+  </section>
+
+  <section id="contact">
+    <h1>Contact Us</h1>
+    <p>Have questions or want to work with us? Reach out via email or phone, and we'll be happy to assist!</p>
+  </section>
+
+  <!-- Image Gallery -->
+  <div class="gallery">
+    <img src="C:\downloads\task4-image1.png" alt="Scene 1" onclick="openLightbox(this)">
+    <img src="C:\downloads\task4-image4.jpg" alt="Scene 2" onclick="openLightbox(this)">
+    <img src="C:\downloads\task4-image3.jpeg" alt="Scene 3" onclick="openLightbox(this)">
+    <img src="C:\downloads\task4-image2.jpeg"alt="Scene 4" onclick="openLightbox(this)">
+  </div>
+
+  <!-- Lightbox -->
+  <div id="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" alt="Lightbox">
+  </div>
+
+  <script>
+    // Toggle Navbar Menu
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active');
+    }
+
+    // Lightbox Functionality
+    function openLightbox(img) {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      lightboxImg.src = img.src;
+      lightbox.style.display = 'flex';
+    }
+
+    function closeLightbox() {
+      const lightbox = document.getElementById('lightbox');
+      lightbox.style.display = 'none';
+    }
+  </script>
+</body>
+</html>
+
